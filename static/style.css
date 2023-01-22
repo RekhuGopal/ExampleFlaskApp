@@ -4,35 +4,43 @@
 	margin: 0 auto;
 	height: 500px;
 	width: 400px;
-	background-color: #e6ffee;
-	border-radius: 10px;
+	background-color: #10cbecbf;
+	border-radius: 11px;
+	margin-top: 50px;
+	border-style: solid;
+  	border-color: #131412;
+}
+
+.loginPageLogo{
+	height: 50px;
+	width: 40px;
 }
 
 .registercontent{
 	margin: 0 auto;
 	height: 720px;
 	width: 400px;
-	background-color: #e6ffee;
+	background-color: #92c4f3;
 	border-radius: 10px;
 }
 
 .logintop{
 	height: 60px;
 	width: 400px;
-	background-color: #009933;
+	background-color: #92c4f3;
 	color: #ffffff;
 }
 
 .registertop{
 	height: 60px;
 	width: 400px;
-	background-color: #009933;
+	background-color: #92c4f3;
 	color: #ffffff;
 }
 
 .textbox{
 	padding: 10px 40px;
-	background-color: #009933;
+	background-color: #92c4f3;
 	border-radius: 10px;
 }
 
@@ -45,7 +53,7 @@
 
 .btn {
 	padding: 10px 40px;
-	background-color: #009933;
+	background-color: #0f100f;
 	color: #FFFFFF;
 	font-style: oblique;
 	font-weight: bold;
@@ -53,7 +61,7 @@
 }
 
 .worddark{
-	color: #009933;
+	color: #92c4f3;
 	font-style: oblique;
 	font-weight: bold;
 }
@@ -81,7 +89,7 @@
 .one .two{
 	width: 225px;
 	height: 100%;
-	background: #009933;
+	background: #92c4f3;
 	padding: 30px 0px;
 	position: fixed;
 }
@@ -101,7 +109,7 @@
 }
 		
 .one .two .active{
-	background: #0a8032;
+	background: #92c4f3;
 }
 
 .one .two ul li{
@@ -118,7 +126,7 @@
 
 .one .two ul li a .side{
 	width: 25px;
-	align:center;
+	align: center;
 }
 
 .one .content{
@@ -129,7 +137,7 @@
 .one .content .topbar{
 	text-align: center;
 	padding: 20px;
-	background: #00b33c;
+	background: #92c4f3;
 	color: white;
 }
 		
@@ -138,7 +146,7 @@
 }
 
 .one .content .contentbar h1{
-	color: #11a844;
+	color: #92c4f3;
 	text-align: center;
 	font-style: oblique;
 	font-weight: bold;
