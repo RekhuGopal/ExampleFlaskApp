@@ -7,23 +7,33 @@
 	</head>
 	<body>
 		<div class="registercontent" align="center">
-			<div class="registertop">
-				<h1>Register</h1>
-			</div></br></br>
+		    </br>
+			</br>
+				<h1>Subscribe Hospital Management</h1>
+			</br>
+			</br>
 			<div class="registerbottom">
 			<form action="{{ url_for('register')}}" method="post" autocomplete="off">
 			<div class="msg">{{ msg }}</div>
-			<input type="text" name="username" placeholder="Enter Your Username" class="textbox" id="username" required></br></br>
-			<input type="password" name="password" placeholder="Enter Your Password" class="textbox" id="password" required></br></br>
-			<input type="email" name="email" placeholder="Enter Your Email ID" class="textbox" id="email" required></br></br>
-			<input type="text" name="organisation" placeholder="Enter Your Organisation" class="textbox" id="organisation" required></br></br>
-			<input type="text" name="address" placeholder="Enter Your Address" class="textbox" id="address" required></br></br>
-			<input type="text" name="city" placeholder="Enter Your City" class="textbox" id="city" required></br></br>
-			<input type="text" name="state" placeholder="Enter Your State" class="textbox" id="state" required></br></br>
-			<input type="text" name="country" placeholder="Enter Your Country" class="textbox" id="country" required></br></br>
-			<input type="text" name="postalcode" placeholder="Enter Your Postal Code" class="textbox" id="postalcode" required></br></br>
+			<input type="email" name="email" placeholder="Your Email ID" class="textbox" id="email" required></br></br>
+			<input type="text" name="hospitalname" placeholder="Your Hospital name" class="textbox" id="hospitalname" required></br></br>
+			<input type="password" name="password" placeholder="Your Password" class="textbox" id="password" required></br></br>
+			<input type="text" name="ownername" placeholder="Hospital Owner name" class="textbox" id="ownername" required></br></br>
+			<input type="text" name="address" placeholder="Your Hospital Address" class="textbox" id="address" required></br></br>
+			<input type="text" name="city" placeholder="Your City" class="textbox" id="city" required></br></br>
+			<input type="text" name="state" placeholder="Your State" class="textbox" id="state" required></br></br>
+			<input type="text" name="country" placeholder="Your Country" class="textbox" id="country" required></br></br>
+			<input type="text" name="postalcode" placeholder="Your Postal Code" class="textbox" id="postalcode" required></br></br>
+			<input type="text" name="phonenumber" placeholder="Your Phone Number" class="textbox" id="phonenumber" required></br></br>
+			<input type="date" name="dateofsubscription" placeholder="Date Of Subscribe" class="textbox" id="dateofsubscription" required></br></br>
+			<input type="text" name="pan" placeholder="Your PAN Number" class="textbox" id="pan" required></br></br>
+			<input type="text" name="adhaarcard" placeholder="Your Adhaar Number" class="textbox" id="adhaarcard" required></br></br>
+			<input type="text" name="gstin" placeholder="Your GST Number" class="textbox" id="gstin" required></br></br>
+		    </br>
 			<input type="submit" class="btn" value="Register">
 			</form>
+		    </br>
+		    </br>
 			<p class="worddark">Already have account? <a class="worddark" href="{{ url_for('login')}}">Login here</a></p>
 			</div>
 		</div>

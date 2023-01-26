@@ -1,16 +1,21 @@
 CREATE DATABASE IF NOT EXISTS `cloudquicklabs` DEFAULT CHARACTER SET  utf8 COLLATE utf8_general_ci;
 USE `cloudquicklabs`
 
-CREATE TABLE IF NOT EXISTS `accounts`(
-    `id` int(11) NOT NULL AUTO_INCREMENT,
-    `username` varchar(50) NOT NULL,
+CREATE TABLE IF NOT EXISTS `hospitalaccounts`(
+    `hospitalid` int(11) NOT NULL AUTO_INCREMENT,
     `password` varchar(255) NOT NULL,
     `email` varchar(100) NOT NULL,
-    `organisation` varchar(100) NOT NULL,
+    `hospitalname` varchar(100) NOT NULL,
     `address` varchar(100) NOT NULL,
     `city` varchar(100) NOT NULL,
     `state` varchar(100) NOT NULL,
     `country` varchar(100) NOT NULL,
     `postalcode` varchar(100) NOT NULL,
-    PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+    `ownername` varchar(100) NOT NULL,
+    `phonenumber` varchar(100) NOT NULL,
+    `dateofsubscription` DATE,
+    `pan` varchar(100) NOT NULL,
+    `adhaarcard` varchar(100) NOT NULL,
+    `gstin` varchar(100) NOT NULL,
+    PRIMARY KEY (`hospitalid`)
+) ENGINE=InnoDB AUTO_INCREMENT=133134 DEFAULT CHARSET=utf8;

@@ -4,7 +4,6 @@ from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
 
-
 app = Flask(__name__)
 
 
@@ -24,11 +23,12 @@ mysql = MySQL(app)
 @app.route('/login', methods =['GET', 'POST'])
 def login():
 	msg = ''
+	
 	if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
 		username = request.form['username']
 		password = request.form['password']
 		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-		cursor.execute('SELECT * FROM accounts WHERE username = % s AND password = % s', (username, password, ))
+		cursor.execute('SELECT * FROM hospitalaccounts WHERE username = % s AND password = % s', (username, password, ))
 		account = cursor.fetchone()
 		if account:
 			session['loggedin'] = True
@@ -50,27 +50,36 @@ def logout():
 @app.route('/register', methods =['GET', 'POST'])
 def register():
 	msg = ''
-	if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'email' in request.form and 'address' in request.form and 'city' in request.form and 'country' in request.form and 'postalcode' in request.form and 'organisation' in request.form:
-		username = request.form['username']
-		password = request.form['password']
+	if request.method == 'POST' and 'email' in request.form and 'hospitalname' in request.form and 'password' in request.form and 'ownername' in request.form and 'address' in request.form and 'city' in request.form and 'state' in request.form and 'country' in request.form and 'postalcode' in request.form and 'phonenumber' in request.form and 'dateofsubscription' in request.form and 'pan' in request.form and 'adhaarcard' in request.form and 'gstin' in request.form:
 		email = request.form['email']
-		organisation = request.form['organisation']
+		hospitalname = request.form['hospitalname']
+		password = request.form['password']
+		ownername = request.form['ownername']
+		address = request.form['address']
+		city = request.form['city']
+		state = request.form['state']
+		country = request.form['country']
 		address = request.form['address']
 		city = request.form['city']
 		state = request.form['state']
 		country = request.form['country']
 		postalcode = request.form['postalcode']
+		phonenumber = request.form['phonenumber']
+		dateofsubscription = request.form['dateofsubscription']
+		pan = request.form['pan']
+		adhaarcard = request.form['adhaarcard']
+		gstin = request.form['gstin']
 		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-		cursor.execute('SELECT * FROM accounts WHERE username = % s', (username, ))
-		account = cursor.fetchone()
-		if account:
-			msg = 'Account already exists !'
+		cursor.execute('SELECT * FROM hospitalaccounts WHERE email = % s', (email, ))
+		hospitalaccount = cursor.fetchone()
+		if hospitalaccount:
+			msg = 'Hostpital Management Subscription already exists for email: '+email+' , you can directly login.!!'
 		elif not re.match(r'[^@]+@[^@]+\.[^@]+', email):
 			msg = 'Invalid email address !'
-		elif not re.match(r'[A-Za-z0-9]+', username):
-			msg = 'name must contain only characters and numbers !'
+		elif not re.match(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$', password):
+			msg = 'Invalid password , valid password contains minimum 8 character with atleast one lower case , upper case , one digit and one special case..!!'
 		else:
-			cursor.execute('INSERT INTO accounts VALUES (NULL, % s, % s, % s, % s, % s, % s, % s, % s, % s)', (username, password, email, organisation, address, city, state, country, postalcode, ))
+			cursor.execute('INSERT INTO hospitalaccounts VALUES (NULL, % s,  % s,  % s,  % s,  % s,  % s,  % s,  % s,  % s,  % s,  % s,  % s,  % s,  % s)',(password, email, hospitalname, address, city, state, country, postalcode, ownername, phonenumber, dateofsubscription, pan, adhaarcard, gstin))
 			mysql.connection.commit()
 			msg = 'You have successfully registered !'
 	elif request.method == 'POST':

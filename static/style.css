@@ -4,43 +4,42 @@
 	margin: 0 auto;
 	height: 500px;
 	width: 400px;
-	background-color: #edf4f5bf;
+	background-color: #0ad5f0bf;
 	border-radius: 11px;
 	margin-top: 50px;
 	border-style: solid;
   	border-color: #131412;
 }
 
-.loginPageLogo{
-	height: 50px;
-	width: 40px;
-}
-
 .registercontent{
 	margin: 0 auto;
-	height: 720px;
-	width: 400px;
-	background-color: #92c4f3;
+	height: 1120px;
+	width: 550px;
+	background-color: #0ad5f0bf;
 	border-radius: 10px;
+	margin-top: 25px;
+	border-style: solid;
+	border-color: #131412;
+	margin-bottom: 25px;
 }
 
 .logintop{
 	height: 60px;
 	width: 400px;
-	background-color: #92c4f3;
+	background-color: #0ad5f0bf;
 	color: #ffffff;
 }
 
 .registertop{
 	height: 60px;
-	width: 400px;
-	background-color: #92c4f3;
+	width: 550px;
+	background-color: #0ad5f0bf;
 	color: #ffffff;
 }
 
 .textbox{
 	padding: 10px 40px;
-	background-color: #92c4f3;
+	background-color: #9dcff3;
 	border-radius: 10px;
 }
 
