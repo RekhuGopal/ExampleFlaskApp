@@ -2,71 +2,96 @@
 
 <html lang="en">
 	<head>
+		<meta charset="UTF-8">
 		<title>display</title>
 		<link rel="stylesheet" href="../static/style.css">
+		<style>
+			table,
+			th,
+			td {
+				border: 1px solid black;
+			}
+			 
+			table {
+				border-spacing: 5px;
+			}
+		</style>
 	</head>
 	<body bgcolor="#e6ffee">
-		<div class="one">
-			<div class="two">
-				<h1>Side Bar</h1>
-				<ul>
-					<li><a href="{{url_for('index')}}">Index</a></li>
-					<li class="active"><a href="{{url_for('display')}}">Display</a></li>
-					<li><a href="{{url_for('update')}}">Update</a></li>
-					<li><a href="{{url_for('logout')}}">Log out</a></li>
-				</ul>
+			<div class="updateregistercontent" align="center">
+				<br>
+				<br>
+				<h1>Hospital Registration Data</h1>	
+				<br>
+				<br>
+					<table style="width:80%">
+						<tr>
+							<td class="admindatakey">Hospital ID:</td>
+							<td class="admindata">{{ account['hospitalid'] }}</td>
+						</tr>
+						<tr>
+							<td class="admindatakey">Password:</td>
+							<td class="admindata">{{ account['password'] }}</td>
+						</tr>
+						<tr>
+							<td class="admindatakey">Email ID:</td>
+							<td class="admindata">{{ account['email'] }}</td>
+						</tr>
+						<tr>
+							<td class="admindatakey">Hospital Name:</td>
+							<td class="admindata">{{ account['hospitalname'] }}</td>
+						</tr>
+						<tr>
+							<td class="admindatakey">Hospital Owner Name:</td>
+							<td class="admindata">{{ account['ownername'] }}</td>
+						</tr>
+						<tr>
+							<td class="admindatakey">Address:</td>
+							<td class="admindata">{{ account['address'] }}</td>
+						</tr>
+						<tr>
+							<td class="admindatakey">City:</td>
+							<td class="admindata">{{ account['city'] }}</td>
+						</tr>
+						<tr>
+							<td class="admindatakey">State:</td>
+							<td class="admindata">{{ account['state'] }}</td>
+						</tr>
+						<tr>
+							<td class="admindatakey">Country:</td>
+							<td class="admindata">{{ account['country'] }}</td>
+						</tr>
+						<tr>
+							<td class="admindatakey">Postal code:</td>
+							<td class="admindata">{{ account['postalcode'] }}</td>
+						</tr>	
+						<tr>
+							<td class="admindatakey">Phone Number:</td>
+							<td class="admindata">{{ account['phonenumber'] }}</td>
+						</tr>		
+						<tr>
+							<td class="admindatakey">Date of Subscription:</td>
+							<td class="admindata">{{ account['dateofsubscription'] }}</td>
+						</tr>	
+						<tr>
+							<td class="admindatakey">PAN:</td>
+							<td class="admindata">{{ account['pan'] }}</td>
+						</tr>	
+						<tr>
+							<td class="admindatakey">Adhaar:</td>
+							<td class="admindata">{{ account['adhaarcard'] }}</td>
+						</tr>	
+						<tr>
+							<td class="admindatakey">GSTIN:</td>
+							<td class="admindata">{{ account['gstin'] }}</td>
+						</tr>
+					</table>	
+					<br>
+				    <br>
+					<ul>
+						<div class="admintaskdiv" align="center">
+						<li><a href="{{url_for('adminindex')}}">Back</a></li>
+					   </div>
 			</div>
-			<div class="content" align="center">
-				<div class="topbar">
-					<h2>Welcome!! You are in Display Page!! </h2>					
-				</div> </br>
-				<div class="contentbar">
-					<h1>Your Details</h1> </br>
-					{% block content %}
-						<div class="border">
-							<table class="worddark"></br></br></br></br>
-								<tr>
-									<td>Username:</td>
-									<td>{{ account['username'] }}</td>
-								</tr>
-								<tr>
-									<td>Password:</td>
-									<td>{{ account['password'] }}</td>
-								</tr>
-								<tr>
-									<td>Email ID:</td>
-									<td>{{ account['email'] }}</td>
-								</tr>
-								<tr>
-									<td>Organisation:</td>
-									<td>{{ account['organisation'] }}</td>
-								</tr>
-								<tr>
-									<td>Address:</td>
-									<td>{{ account['address'] }}</td>
-								</tr>
-								<tr>
-									<td>City:</td>
-									<td>{{ account['city'] }}</td>
-								</tr>
-								<tr>
-									<td>State:</td>
-									<td>{{ account['state'] }}</td>
-								</tr>
-								<tr>
-									<td>Country:</td>
-									<td>{{ account['country'] }}</td>
-								</tr>
-								<tr>
-									<td>Postal code:</td>
-									<td>{{ account['postalcode'] }}</td>
-								</tr>						
-							</table>
-						</div>
-					{% endblock %}										
-				</div>
-				
-			</div>
-		</div>
 	</body>
 </html>

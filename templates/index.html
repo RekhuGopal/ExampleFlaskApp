@@ -1,30 +1,41 @@
 <!--Store this code in 'index.html' file inside the 'templates' folder-->
 <html lang="en">
 	<head>
+		<meta charset="UTF-8">
 		<title>index</title>
 		<link rel="stylesheet" href="../static/style.css">
 	</head>
 
-	<body bgcolor="#e6ffee">
-		<div class="one">
-			<div class="two">
-				<h1>Side Bar</h1>
+	<body bgcolor="#f0e9ed">
+		<div class="subscriptionadmin" align="center">
+			    </br>
+		        </br>
+			    <h1>Welcome to Hospital Adminstration</h1>	
+				<br>
+			    </br>
+				<table>
+					<tr>
+					  <td class="admindatakey">Hospital ID:</td>
+					  <td class="admindata">{{ msg['hospitalid'] }}</td>
+					</tr>
+					<tr>
+						<td class="admindatakey">Hospital Name:</td>
+						<td class="admindata">{{ msg['hospitalname'] }}</td>
+					  </tr>
+				  </table>
+                <br>
+				<br>
 				<ul>
-					<li class="active"><a href="{{url_for('index')}}">Index</a></li>
+					<div class="admintaskdiv" align="center">
 					<li><a href="{{url_for('display')}}">Display</a></li>
+				   </div>
+				   <div class="admintaskdiv" align="center">
 					<li><a href="{{url_for('update')}}">Update</a></li>
+				    </div>
+					<div class="admintaskdiv" align="center">
 					<li><a href="{{url_for('logout')}}">Log out</a></li>
+				    </div>
 				</ul>
-			</div>
-			<div class="content" align="center">
-				<div class="topbar">
-					<h2>Welcome!! You are in Index Page!! </h2>					
-				</div></br></br>
-				<div class="contentbar">
-					<div class="msg">{{ msg }}</div>
-				</div>
-				
-			</div>
 		</div>
 	</body>
 </html>

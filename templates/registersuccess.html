@@ -1,0 +1,23 @@
+<!--Store this code in 'register.html' file inside the 'templates' folder-->
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title> register </title>
+		<link rel="stylesheet" href="../static/style.css">	
+	</head>
+	<body background="#f0e9ed">
+		<div class="registerresults" align="center">
+		    </br>
+			</br>
+				<h1>Subscribe Hospital Management</h1>
+			</br>
+			</br>
+				<h2 class="Registersuccess">{{ msg }}</h2>
+		    </br>
+		    </br>
+			<p class="worddark">Already has account? <a class="worddark" href="{{ url_for('login')}}">Login here</a></p>
+		    </br>
+	        </br>
+		</div>
+	</body>
+</html>

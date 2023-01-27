@@ -23,22 +23,21 @@ mysql = MySQL(app)
 @app.route('/login', methods =['GET', 'POST'])
 def login():
 	msg = ''
-	
-	if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
-		username = request.form['username']
+	if request.method == 'POST' and 'email' in request.form and 'password' in request.form:
+		username = request.form['email']
 		password = request.form['password']
 		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-		cursor.execute('SELECT * FROM hospitalaccounts WHERE username = % s AND password = % s', (username, password, ))
+		cursor.execute('SELECT * FROM hospitalaccounts WHERE email = % s AND password = % s', (username, password, ))
 		account = cursor.fetchone()
 		if account:
 			session['loggedin'] = True
-			session['id'] = account['id']
-			session['username'] = account['username']
-			msg = 'Logged in successfully !'
-			return render_template('index.html', msg = msg)
+			session['id'] = account['hospitalid']
+			session['username'] = account['email']
+			return render_template('index.html', msg = account)
 		else:
-			msg = 'Incorrect username / password !'
-	return render_template('login.html', msg = msg)
+			msg = 'Incorrect username or password'
+			return render_template('masterloginfail.html', msg = msg)
+	return render_template('masterlogin.html')
 
 @app.route('/logout')
 def logout():
@@ -73,15 +72,19 @@ def register():
 		cursor.execute('SELECT * FROM hospitalaccounts WHERE email = % s', (email, ))
 		hospitalaccount = cursor.fetchone()
 		if hospitalaccount:
-			msg = 'Hostpital Management Subscription already exists for email: '+email+' , you can directly login.!!'
+			msg = 'Subscription already exists for email: '+email
+			return render_template('registersuccess.html', msg = msg)
 		elif not re.match(r'[^@]+@[^@]+\.[^@]+', email):
 			msg = 'Invalid email address !'
+			return render_template('registerfailure.html', msg = msg)
 		elif not re.match(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$', password):
-			msg = 'Invalid password , valid password contains minimum 8 character with atleast one lower case , upper case , one digit and one special case..!!'
+			msg = 'Valid password has minimum 8 character with atleast one lower case ,one upper case , one digit and one special case..!!'
+			return render_template('registerfailure.html', msg = msg)
 		else:
 			cursor.execute('INSERT INTO hospitalaccounts VALUES (NULL, % s,  % s,  % s,  % s,  % s,  % s,  % s,  % s,  % s,  % s,  % s,  % s,  % s,  % s)',(password, email, hospitalname, address, city, state, country, postalcode, ownername, phonenumber, dateofsubscription, pan, adhaarcard, gstin))
 			mysql.connection.commit()
 			msg = 'You have successfully registered !'
+			return render_template('registersuccess.html', msg = msg)
 	elif request.method == 'POST':
 		msg = 'Please fill out the form !'
 	return render_template('register.html', msg = msg)
@@ -98,9 +101,22 @@ def index():
 def display():
 	if 'loggedin' in session:
 		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-		cursor.execute('SELECT * FROM accounts WHERE id = % s', (session['id'], ))
+		cursor.execute('SELECT * FROM hospitalaccounts WHERE hospitalid = % s', (session['id'], ))
 		account = cursor.fetchone()
 		return render_template("display.html", account = account)
+	return redirect(url_for('login'))
+
+@app.route("/adminindex")
+def adminindex():
+	if 'loggedin' in session:
+		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+		cursor.execute('SELECT * FROM hospitalaccounts WHERE hospitalid = % s', (session['id'], ))
+		account = cursor.fetchone()
+		if account:
+			session['loggedin'] = True
+			session['id'] = account['hospitalid']
+			session['username'] = account['email']
+			return render_template('index.html', msg = account)
 	return redirect(url_for('login'))
 
 @app.route("/update", methods =['GET', 'POST'])

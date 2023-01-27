@@ -6,17 +6,20 @@
 		<title> Login </title>
 		<link rel="stylesheet" href="../static/style.css">	
 	</head>
-	<body>
+	<body bgcolor="#f0e9ed">
 		<div class="logincontent" align="center">
 		    </br>
 			<img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com" style="width:70px;height:70px;">
 		    </br></br>
 		    <h1>Hospital Management</h1>
-			</br></br></br></br>
+			</br></br>
+			<p1 class="loginsubheading">Management account login</p2>
+		    </br>
+		    </br>
+			<div class="masterloginfail">{{ msg }}</div>
 			<div class="loginbottom">
 			<form action="{{ url_for('login')}}" method="post" autocomplete="off">
-			<div class="msg">{{ msg }}</div>
-			<input type="text" name="username" placeholder="Enter Your Username" class="textbox" id="username" required></br></br>
+			<input type="text" name="email" placeholder="Enter Your Email" class="textbox" id="email" required></br></br>
 			<input type="password" name="password" placeholder="Enter Your Password" class="textbox" id="password" required></br></br></br>
 			<input type="submit" class="btn" value="Login">
 			</form></br></br>

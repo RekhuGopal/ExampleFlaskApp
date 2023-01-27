@@ -23,6 +23,42 @@
 	margin-bottom: 25px;
 }
 
+.updateregistercontent{
+	margin: 0 auto;
+	height: 620px;
+	width: 550px;
+	background-color: #0ad5f0bf;
+	border-radius: 10px;
+	margin-top: 25px;
+	border-style: solid;
+	border-color: #131412;
+	margin-bottom: 25px;
+}
+
+.registerresults{
+	margin: 0 auto;
+	height: 275px;
+	width: 550px;
+	background-color: #0ad5f0bf;
+	border-radius: 10px;
+	margin-top: 25px;
+	border-style: solid;
+	border-color: #131412;
+	margin-bottom: 25px;
+}
+
+.subscriptionadmin{
+	margin: 0 auto;
+	height: 500px;
+	width: 600px;
+	background-color: #0ad5f0bf;
+	border-radius: 10px;
+	margin-top: 25px;
+	border-style: solid;
+	border-color: #131412;
+	margin-bottom: 25px;
+}
+
 .logintop{
 	height: 60px;
 	width: 400px;
@@ -60,10 +96,52 @@
 }
 
 .worddark{
-	color: #080808;
+	color: #120f0f;
 	font-style: oblique;
 	font-weight: bold;
 }
+
+.loginsubheading{
+	color: #120f0f;
+	font-weight: bold;
+}
+
+.admindatakey{
+	color: #120f0f ;
+	font-weight: bold;
+}
+.admindata{
+	color: #ed11d3;
+	font-weight: bold;
+}
+
+.admintaskdiv{
+	margin: 0 auto;
+	height: 30px;
+	width: 200px;
+	background-color: #dcdcebfb;
+	border-radius: 10px;
+	margin-top: 20px;
+	border-style: solid;
+	border-color: #131412;
+}
+
+.Registerfail{
+	color: #e60e0e;
+	font-weight: bold;
+}
+
+.Registersuccess{
+	color: #be0f78;
+	font-weight: bold;
+}
+
+.masterloginfail{
+	color: #e60e0e;
+	font-weight: bold;
+}
+
+
 
 .wordlight{
 	color: #FFFFFF;

@@ -1,0 +1,28 @@
+<!--Store this code in 'login.html' file inside the 'templates' folder-->
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title> Login </title>
+		<link rel="stylesheet" href="../static/style.css">	
+	</head>
+	<body bgcolor="#f0e9ed">
+		<div class="logincontent" align="center">
+		    </br>
+			<img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com" style="width:70px;height:70px;">
+		    </br></br>
+		    <h1>Hospital Management</h1>
+			</br></br>
+			<p1 class="loginsubheading">Management account login</p2>
+		    </br></br>
+			<div class="loginbottom">
+			<form action="{{ url_for('login')}}" method="post" autocomplete="off">
+			<input type="text" name="email" placeholder="Enter Your Email" class="textbox" id="email" required></br></br>
+			<input type="password" name="password" placeholder="Enter Your Password" class="textbox" id="password" required></br></br></br>
+			<input type="submit" class="btn" value="Login">
+			</form></br></br>
+			<p class="worddark">New to this page? <a class="worddark" href="{{ url_for('register')}}">Register here</a></p>
+			</div>
+		</div>
+	</body>
+</html>
