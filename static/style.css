@@ -23,6 +23,18 @@
 	margin-bottom: 25px;
 }
 
+.registerstaff{
+	margin: 0 auto;
+	height: 1120px;
+	width: 550px;
+	background-color: #0ad5f0bf;
+	border-radius: 10px;
+	margin-top: 25px;
+	border-style: solid;
+	border-color: #131412;
+	margin-bottom: 25px;
+}
+
 .updateregistercontent{
 	margin: 0 auto;
 	height: 1020px;
@@ -51,6 +63,18 @@
 .registerresults{
 	margin: 0 auto;
 	height: 275px;
+	width: 550px;
+	background-color: #0ad5f0bf;
+	border-radius: 10px;
+	margin-top: 25px;
+	border-style: solid;
+	border-color: #131412;
+	margin-bottom: 25px;
+}
+
+.registerresults{
+	margin: 0 auto;
+	height: 300px;
 	width: 550px;
 	background-color: #0ad5f0bf;
 	border-radius: 10px;

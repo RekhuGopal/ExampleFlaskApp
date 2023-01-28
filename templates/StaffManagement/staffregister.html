@@ -1,0 +1,63 @@
+<!--Store this code in 'register.html' file inside the 'templates' folder-->
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title> register </title>
+		<link rel="stylesheet" href="../static/style.css">	
+	</head>
+	<body bgcolor="#e6ffee">
+		<div class="registerstaff" align="center">
+		    </br>
+			</br>
+				<h1>Register Hospital Staff</h1>
+			</br>
+			</br>
+			<div class="registerbottom">
+			<form action="{{ url_for('registerstaff')}}" method="post" autocomplete="off">
+			<input type="email" name="email" placeholder="Staff Email ID" class="textbox" id="email" required></br></br>
+			<input type="text" name="staffname" placeholder="Staff Name" class="textbox" id="staffname" required></br></br>
+			<input type="password" name="password" placeholder="Staff Password" class="textbox" id="password" required></br></br>
+			<label for="role">Choose Role:</label>
+			<select name="role" id="role">
+				<option value="doctor">Doctor</option>
+				<option value="staffnurse">Nurse</option>
+				<option value="receptionist">Receptionist</option>
+				<option value="pharmacist">Pharmacist</option>
+			</select></br></br>
+			<label for="specialities">Highest Specialities:</label>
+			<select name="specialities" id="specialities">
+				<option value="mbbs">MBBS</option>
+				<option value="mdmedicine">MD.Medicine</option>
+				<option value="degree">Degree</option>
+				<option value="pharmacist">B.SC Nursing</option>
+				<option value="other">Others</option>
+			</select></br></br>
+			<label for="sex">Gender:</label>
+			<select name="sex" id="sex">
+				<option value="male">Male</option>
+				<option value="female">Female</option>
+				<option value="other">Other</option>
+			</select></br></br>
+			<input type="text" name="address" placeholder="Staff Address" class="textbox" id="address" required></br></br>
+			<input type="text" name="city" placeholder="Staff City" class="textbox" id="city" required></br></br>
+			<input type="text" name="state" placeholder="Staff State" class="textbox" id="state" required></br></br>
+			<input type="text" name="country" placeholder="Staff Country" class="textbox" id="country" required></br></br>
+			<input type="text" name="postalcode" placeholder="Staff Postal Code" class="textbox" id="postalcode" required></br></br>
+			<input type="text" name="phonenumber" placeholder="Staff Phone Number" class="textbox" id="phonenumber" required></br></br>
+			<label for="role">DOB:</label>
+			<input type="date" name="dateofbirth" placeholder="Date Of Birth" class="textbox" id="dateofbirth" required></br></br>
+			<input type="text" name="adhaarcard" placeholder="Staff Adhaar Number" class="textbox" id="adhaarcard" required></br></br>
+		    </br>
+			<input type="submit" class="btn" value="Register">
+			</form>
+		    </br>
+		    </br>
+			<ul>
+				<div class="admintaskdiv" align="center">
+				<li><a href="{{url_for('adminindex')}}">Back</a></li>
+				</div>
+			</ul>
+			</div>
+		</div>
+	</body>
+</html>

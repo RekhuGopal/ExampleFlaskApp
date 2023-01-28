@@ -58,10 +58,6 @@ def register():
 		city = request.form['city']
 		state = request.form['state']
 		country = request.form['country']
-		address = request.form['address']
-		city = request.form['city']
-		state = request.form['state']
-		country = request.form['country']
 		postalcode = request.form['postalcode']
 		phonenumber = request.form['phonenumber']
 		dateofsubscription = request.form['dateofsubscription']
@@ -88,6 +84,45 @@ def register():
 	elif request.method == 'POST':
 		msg = 'Please fill out the form !'
 	return render_template('masterregister.html', msg = msg)
+
+@app.route('/registerstaff', methods =['GET', 'POST'])
+def registerstaff():
+	msg = ''
+	if request.method == 'POST' and 'email' in request.form and 'staffname' in request.form and 'password' in request.form and 'role' in request.form and 'specialities' in request.form and 'sex' in request.form  and 'address' in request.form and 'city' in request.form and 'state' in request.form and 'country' in request.form and 'postalcode' in request.form and 'phonenumber' in request.form and 'dateofbirth' in request.form and 'adhaarcard' in request.form:
+		email = request.form['email']
+		staffname = request.form['staffname']
+		password = request.form['password']
+		role = request.form['role']
+		specialities = request.form['specialities']
+		sex = request.form['sex']
+		address = request.form['address']
+		city = request.form['city']
+		state = request.form['state']
+		country = request.form['country']
+		postalcode = request.form['postalcode']
+		phonenumber = request.form['phonenumber']
+		dateofbirth = request.form['dateofbirth']
+		adhaarcard = request.form['adhaarcard']
+		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+		cursor.execute('SELECT * FROM hospitalstaff WHERE email = % s', (email, ))
+		staffaccount = cursor.fetchone()
+		if staffaccount:
+			msg = 'Staff record already exists for email: '+email
+			return render_template('StaffManagement/staffregistersuccess.html', msg = msg)
+		elif not re.match(r'[^@]+@[^@]+\.[^@]+', email):
+			msg = 'Invalid email address !'
+			return render_template('StaffManagement/staffregisterfailure.html', msg = msg)
+		elif not re.match(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$', password):
+			msg = 'Valid password has minimum 8 character with atleast one lower case ,one upper case , one digit and one special case..!!'
+			return render_template('StaffManagement/staffregisterfailure.html', msg = msg)
+		else:
+			cursor.execute('INSERT INTO hospitalstaff VALUES (% s, NULL, % s,  % s,  % s,  % s,  % s,  % s,  % s,  % s,  % s,  % s,  % s,  % s,  % s,  % s)',(session['id'], password, email, staffname, role, specialities, address, city, state, country, postalcode, phonenumber, dateofbirth, sex, adhaarcard))
+			mysql.connection.commit()
+			msg = 'You have successfully registered !'
+			return render_template('StaffManagement/staffregistersuccess.html', msg = msg)
+	elif request.method == 'POST':
+		msg = 'Please fill out the form !'
+	return render_template('StaffManagement/staffregister.html', msg = msg)
 
 @app.route("/index")
 def index():
