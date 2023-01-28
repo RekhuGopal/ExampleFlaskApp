@@ -5,7 +5,7 @@
 		<title> register </title>
 		<link rel="stylesheet" href="../static/style.css">	
 	</head>
-	<body background="#f0e9ed">
+	<body bgcolor="#e6ffee">
 		<div class="registerresults" align="center">
 		    </br>
 			</br>
@@ -15,7 +15,11 @@
 				<h2 class="Registerfail">{{ msg }}</h2>
 		    </br>
 		    </br>
-			<p class="worddark">Failed to register? <a class="worddark" href="{{ url_for('register')}}">Try again here</a></p>
+			<ul>
+				<div class="admintaskdiv" align="center">
+				<li><a href="{{url_for('adminindex')}}">Back</a></li>
+				</div>
+			</ul>
 		    </br>
 	        </br>
 		</div>
