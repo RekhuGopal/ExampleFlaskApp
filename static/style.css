@@ -72,6 +72,18 @@
 	margin-bottom: 25px;
 }
 
+.masterupdatefail{
+	margin: 0 auto;
+	height: 310px;
+	width: 550px;
+	background-color: #0ad5f0bf;
+	border-radius: 10px;
+	margin-top: 25px;
+	border-style: solid;
+	border-color: #131412;
+	margin-bottom: 25px;
+}
+
 .subscriptionadmin{
 	margin: 0 auto;
 	height: 500px;
