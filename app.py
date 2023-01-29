@@ -124,17 +124,23 @@ def registerstaff():
 		msg = 'Please fill out the form !'
 	return render_template('StaffManagement/staffregister.html', msg = msg)
 
-@app.route("/staffupdatedisplay")
+@app.route("/staffupdatedisplay", methods =['GET', 'POST'])
 def staffupdatedisplay():
 	if 'loggedin' in session:
 		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-		cursor.execute('SELECT * FROM hospitalstaff WHERE email=% s AND hospitalid=% s ', (request.form['email'], session['id'] ))
-		accounts = cursor.fetchall()
-		if accounts:
-			return render_template("staffupdatedisplay.html", listaccount = accounts)
+		cursor.execute('SELECT * FROM hospitalstaff WHERE email=% s AND hospitalid=% s', (request.form['email'], session['id'] ))
+		account = cursor.fetchone()
+		if account:
+			return render_template("StaffManagement/staffupdatedisplay.html", account = account)
 		else:
 			msg = 'No staff record exist for email '+request.form['email']
-			return render_template('staffupdatefail.html')
+			return render_template('StaffManagement/staffupdatefail.html', msg=msg)
+	return redirect(url_for('login'))
+
+@app.route("/staffupdatedisplaymaster")
+def staffupdatedisplaymaster():
+	if 'loggedin' in session:
+		return render_template("StaffManagement/staffupdatedisplaymaster.html")
 	return redirect(url_for('login'))
 
 @app.route("/index")
@@ -207,8 +213,8 @@ def updatemasterdata():
 				return render_template('masterupdatesuccess.html', msg = msg)
 	return redirect(url_for('login'))
 
-@app.route("/updatstaffdata", methods =['GET', 'POST'])
-def updatstaffdata():
+@app.route("/staffdataupdate", methods =['GET', 'POST'])
+def staffdataupdate():
 	msg = ''
 	if 'loggedin' in session:
 		msg = ''
@@ -231,15 +237,15 @@ def updatstaffdata():
 			cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
 			if not re.match(r'[^@]+@[^@]+\.[^@]+', email):
 				msg = 'Invalid email address !'
-				return render_template('staffupdatefail.html', msg = msg)
+				return render_template('StaffManagement/staffupdatefail.html', msg = msg)
 			elif not re.match(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$', password):
 				msg = 'Valid password has minimum 8 character with atleast one lower case ,one upper case , one digit and one special case..!!'
-				return render_template('staffupdatefail.html', msg = msg)
+				return render_template('StaffManagement/staffupdatefail.html', msg = msg)
 			else:
 				cursor.execute('UPDATE hospitalstaff SET password=% s,  email=% s,  staffname=% s,  address=% s,  city=% s,  state=% s,  country=% s,  postalcode=% s,  role=% s,  phonenumber=% s,  specialities=% s,  adhaarcard=% s,  dateofbirth=% s, sex=% s WHERE hospitalid=% s AND staffid=% s ',(password, email, staffname, address, city, state, country, postalcode, role, phonenumber, specialities, adhaarcard, dateofbirth, gender, session['id'], staffid))
 				mysql.connection.commit()
 				msg = 'Staff '+staffname+' with ID: '+str(staffid)+' and Email: '+email+' is updated successfully..! '
-				return render_template('staffupdatesuccess.html', msg = msg)
+				return render_template('StaffManagement/staffupdatesuccess.html', msg = msg)
 	return redirect(url_for('login'))
 
 if __name__ == "__main__":
