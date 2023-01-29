@@ -1,0 +1,61 @@
+<!--Store this code in 'display.html' file inside the 'templates' folder-->
+
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>display</title>
+		<link rel="stylesheet" href="../static/style.css">
+		<style>
+			table,
+			th,
+			td {
+				border: 1px solid black;
+			}
+			 
+			table {
+				border-spacing: 5px;
+			}
+		</style>
+	</head>
+	<body bgcolor="#e6ffee">
+			<div class="staffupdatemaster" align="center">
+				<br>
+				<br>
+				<h1>Hospital Staff Record Update</h1>	
+				<br>
+				<br>
+				<form action="{{ url_for('staffupdatedisplay')}}" method="get" autocomplete="off">
+				<input type="email" name="email" placeholder="Staff Email ID" class="textbox" id="email" required></br></br>
+				<label for="email">Choose Role:</label>
+			    <select name="email" id="email"></select>
+			    <script>
+					var select = document.getElementById("arr");
+					var elmts = ["HTML", "CSS", "JS", "PHP", "jQuery"];
+					up.innerHTML = "Click on the button to "
+								+ "perform the operation"+
+								".<br>Array - [" + elmts + "]";
+			
+					// Main function
+					function GFG_Fun() {
+						for (var i = 0; i < elmts.length; i++) {
+							var optn = elmts[i];
+							var el = document.createElement("option");
+							el.textContent = optn;
+							el.value = optn;
+							select.appendChild(el);
+						}
+						down.innerHTML = "Elements Added";
+					}
+			</script>
+				<br>
+				<br>
+				<input type="submit" class="btn" value="Update">
+				</form>
+				<br>
+				<ul>
+					<div class="admintaskdiv" align="center">
+					<li><a href="{{url_for('adminindex')}}">Back</a></li>
+					</div>
+			</div>
+	</body>
+</html>

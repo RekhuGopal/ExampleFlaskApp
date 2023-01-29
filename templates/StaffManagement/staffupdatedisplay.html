@@ -1,0 +1,105 @@
+<!--Store this code in 'display.html' file inside the 'templates' folder-->
+
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>display</title>
+		<link rel="stylesheet" href="../static/style.css">
+		<style>
+			table,
+			th,
+			td {
+				border: 1px solid black;
+			}
+			 
+			table {
+				border-spacing: 5px;
+			}
+		</style>
+	</head>
+	<body bgcolor="#e6ffee">
+			<div class="updateregistercontent" align="center">
+				<br>
+				<br>
+				<h1>Hospital Staff Record Update</h1>	
+				<br>
+				<br>
+				<form action="{{ url_for('updatstaffdata')}}" method="post" autocomplete="off">
+					<table style="width:80%">
+						<tr>
+							<td class="admindatakey">Hospital ID:</td>
+							<td class="admindata">{{ account['hospitalid'] }}</td>
+						</tr>
+						<tr>
+							<td class="admindatakey">Staff ID:</td>
+							<td class="admindata"><input type="text" name="staffid" class="textbox" id="staffid"  value ="{{ account['staffid'] }}" readonly></td>
+						</tr>
+						<tr>
+							<td class="admindatakey">Staff Name:</td>
+							<td class="admindata"><input type="text" name="staffname" class="textbox" id="staffname"  value ="{{ account['staffname'] }}" required></td>
+						</tr>
+						<tr>
+							<td class="admindatakey">Password:</td>
+							<td class="admindata"><input type="password" name="password" class="textbox" id="password"  value ="{{ account['password'] }}" required></td>
+						</tr>
+						<tr>
+							<td class="admindatakey">Email ID:</td>
+							<td class="admindata"><input type="email" name="email" class="textbox" id="email"  value ="{{ account['email'] }}" required></td>
+						</tr>
+						<tr>
+							<td class="admindatakey">Role:</td>
+							<td class="admindata"><input type="text" name="role" class="textbox" id="role"  value ="{{ account['role'] }}" required></td>
+						</tr>
+						<tr>
+							<td class="admindatakey">Specialities:</td>
+							<td class="admindata"><input type="text" name="specialities" class="textbox" id="specialities"  value ="{{ account['specialities'] }}" required></td>
+						</tr>
+						<tr>
+							<td class="admindatakey">Address:</td>
+							<td class="admindata"><input type="text" name="address" class="textbox" id="address"  value ="{{ account['address'] }}" required></td>
+						</tr>
+						<tr>
+							<td class="admindatakey">City:</td>
+							<td class="admindata"><input type="text" name="city" class="textbox" id="city"  value ="{{ account['city'] }}" required></td>
+						</tr>
+						<tr>
+							<td class="admindatakey">State:</td>
+							<td class="admindata"><input type="text" name="state" class="textbox" id="state"  value ="{{ account['state'] }}" required></td>
+						</tr>
+						<tr>
+							<td class="admindatakey">Country:</td>
+							<td class="admindata"><input type="text" name="country" class="textbox" id="country"  value ="{{ account['country'] }}" required></td>
+						</tr>
+						<tr>
+							<td class="admindatakey">Postal code:</td>
+							<td class="admindata"><input type="text" name="postalcode" class="textbox" id="postalcode"  value ="{{ account['postalcode'] }}" required></td>
+						</tr>	
+						<tr>
+							<td class="admindatakey">Phone Number:</td>
+							<td class="admindata"><input type="text" name="phonenumber" class="textbox" id="phonenumber"  value ="{{ account['phonenumber'] }}" required></td>
+						</tr>		
+						<tr>
+							<td class="admindatakey">Date of Birth:</td>
+			                <td class="admindata"><input type="date" name="dateofbirth" placeholder="Date Of Birth" class="textbox" id="dateofbirth" required> </td>
+						</tr>	
+						<tr>
+							<td class="admindatakey">Gender:</td>
+							<td class="admindata"><input type="text" name="sex" class="textbox" id="sex"  value ="{{ account['sex'] }}" required></td>
+						</tr>	
+						<tr>
+							<td class="admindatakey">Adhaar:</td>
+							<td class="admindata"><input type="text" name="adhaarcard" class="textbox" id="adhaarcard"  value ="{{ account['adhaarcard'] }}" required></td>
+						</tr>	
+					</table>	
+					<br>
+					<br>
+					<input type="submit" class="btn" value="Update">
+			        </form>
+					<br>
+					<ul>
+						<div class="admintaskdiv" align="center">
+						<li><a href="{{url_for('adminindex')}}">Back</a></li>
+					   </div>
+			</div>
+	</body>
+</html>

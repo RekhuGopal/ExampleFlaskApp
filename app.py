@@ -124,6 +124,19 @@ def registerstaff():
 		msg = 'Please fill out the form !'
 	return render_template('StaffManagement/staffregister.html', msg = msg)
 
+@app.route("/staffupdatedisplay")
+def staffupdatedisplay():
+	if 'loggedin' in session:
+		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+		cursor.execute('SELECT * FROM hospitalstaff WHERE email=% s AND hospitalid=% s ', (request.form['email'], session['id'] ))
+		accounts = cursor.fetchall()
+		if accounts:
+			return render_template("staffupdatedisplay.html", listaccount = accounts)
+		else:
+			msg = 'No staff record exist for email '+request.form['email']
+			return render_template('staffupdatefail.html')
+	return redirect(url_for('login'))
+
 @app.route("/index")
 def index():
 	if 'loggedin' in session:
@@ -175,10 +188,6 @@ def updatemasterdata():
 			city = request.form['city']
 			state = request.form['state']
 			country = request.form['country']
-			address = request.form['address']
-			city = request.form['city']
-			state = request.form['state']
-			country = request.form['country']
 			postalcode = request.form['postalcode']
 			phonenumber = request.form['phonenumber']
 			pan = request.form['pan']
@@ -196,6 +205,41 @@ def updatemasterdata():
 				mysql.connection.commit()
 				msg = 'Hopsital '+hospitalname+' with ID: '+str(session['id'])+' and Email: '+email+' is updated successfully..! '
 				return render_template('masterupdatesuccess.html', msg = msg)
+	return redirect(url_for('login'))
+
+@app.route("/updatstaffdata", methods =['GET', 'POST'])
+def updatstaffdata():
+	msg = ''
+	if 'loggedin' in session:
+		msg = ''
+		if request.method == 'POST' and 'staffid' in request.form and 'email' in request.form and 'staffname' in request.form and 'password' in request.form and 'role' in request.form and 'specialities' in request.form and 'address' in request.form and 'city' in request.form and 'state' in request.form and 'country' in request.form and 'postalcode' in request.form and 'phonenumber' in request.form  and 'sex' in request.form and 'adhaarcard' in request.form and 'dateofbirth' in request.form:
+			staffid = request.form['staffid']
+			email = request.form['email']
+			staffname = request.form['staffname']
+			password = request.form['password']
+			role = request.form['role']
+			specialities = request.form['specialities']
+			address = request.form['address']
+			city = request.form['city']
+			state = request.form['state']
+			country = request.form['country']
+			postalcode = request.form['postalcode']
+			phonenumber = request.form['phonenumber']
+			dateofbirth = request.form['dateofbirth']
+			adhaarcard = request.form['adhaarcard']
+			gender = request.form['sex']
+			cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+			if not re.match(r'[^@]+@[^@]+\.[^@]+', email):
+				msg = 'Invalid email address !'
+				return render_template('staffupdatefail.html', msg = msg)
+			elif not re.match(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$', password):
+				msg = 'Valid password has minimum 8 character with atleast one lower case ,one upper case , one digit and one special case..!!'
+				return render_template('staffupdatefail.html', msg = msg)
+			else:
+				cursor.execute('UPDATE hospitalstaff SET password=% s,  email=% s,  staffname=% s,  address=% s,  city=% s,  state=% s,  country=% s,  postalcode=% s,  role=% s,  phonenumber=% s,  specialities=% s,  adhaarcard=% s,  dateofbirth=% s, sex=% s WHERE hospitalid=% s AND staffid=% s ',(password, email, staffname, address, city, state, country, postalcode, role, phonenumber, specialities, adhaarcard, dateofbirth, gender, session['id'], staffid))
+				mysql.connection.commit()
+				msg = 'Staff '+staffname+' with ID: '+str(staffid)+' and Email: '+email+' is updated successfully..! '
+				return render_template('staffupdatesuccess.html', msg = msg)
 	return redirect(url_for('login'))
 
 if __name__ == "__main__":
