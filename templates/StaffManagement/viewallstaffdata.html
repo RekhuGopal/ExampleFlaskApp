@@ -1,0 +1,73 @@
+<!--Store this code in 'display.html' file inside the 'templates' folder-->
+
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>display</title>
+		<link rel="stylesheet" href="../static/style.css">
+	</head>
+	<style>
+		table, th, td {
+		  border:2px solid black;
+		}
+	</style>
+	<body bgcolor="#e6ffee">
+			<div class="viewallstaffdata" align="center">
+				<br>
+				<br>
+				<h1>Hospital Staff Records Display</h1>	
+				<br>
+				<br>
+				<table id="table" style="width:50%">
+					<thead>
+						<tr>
+							<td class="viewallstaff">Hospital ID</td>
+							<td class="viewallstaff">Staff ID</td>
+							<td class="viewallstaff">Staff Name</td>
+							<td class="viewallstaff">Password</td>
+							<td class="viewallstaff">Email ID</td>
+							<td class="viewallstaff">Role</td>
+							<td class="viewallstaff">Specialities</td>
+							<td class="viewallstaff">Address</td>
+							<td class="viewallstaff">City</td>
+							<td class="viewallstaff">State</td>
+							<td class="viewallstaff">Country</td>
+							<td class="viewallstaff">Postal code</td>
+							<td class="viewallstaff">Phone Number</td>
+							<td class="viewallstaff">Date of Birth</td>
+							<td class="viewallstaff">Gender</td>
+							<td class="viewallstaff">Adhaar</td>
+						</tr>
+					<thead>
+					<tbody>
+						{% for account in accounts %}
+							<tr>
+							<td>{{ account['hospitalid'] }}</td>
+							<td>{{ account['staffid'] }}</td>
+							<td>{{ account['staffname'] }}</td>
+							<td>{{ account['password'] }}</td>
+							<td>{{ account['email'] }}</td>
+							<td>{{ account['role'] }}</td>
+							<td>{{ account['specialities'] }}</td>
+							<td>{{ account['address'] }}</td>
+							<td>{{ account['city'] }}</td>
+							<td>{{ account['state'] }}</td>
+							<td>{{ account['country'] }}</td>
+							<td>{{ account['postalcode'] }}</td>
+							<td>{{ account['phonenumber'] }}</td>
+							<td>{{ account['dateofbirth'] }}</td>
+							<td>{{ account['sex'] }}</td>
+							<td>{{ account['adhaarcard'] }}</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+				<br>
+				<br>
+				<div class="admintaskdiv" align="center">
+				<li><a href="{{url_for('adminindex')}}">Back</a></li>
+				</div>
+				<br>
+			</div>
+	</body>
+</html>

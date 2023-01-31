@@ -47,6 +47,17 @@
 	margin-bottom: 25px;
 }
 
+.viewallstaffdata{
+	margin: 0 auto;
+	height: auto;
+	width: 1500px;
+	background-color: #0ad5f0bf;
+	border-radius: 10px;
+	margin-top: 25px;
+	border-style: solid;
+	border-color: #131412;
+	margin-bottom: 25px;
+}
 .displayregistercontent{
 	margin: 0 auto;
 	height: 620px;
@@ -122,8 +133,8 @@
 
 .subscriptionadmin{
 	margin: 0 auto;
-	height: 500px;
-	width: 600px;
+	height: 570px;
+	width: 660px;
 	background-color: #0ad5f0bf;
 	border-radius: 10px;
 	margin-top: 25px;
@@ -181,6 +192,11 @@
 
 .admindatakey{
 	color: #120f0f ;
+	font-weight: bold;
+}
+
+.viewallstaff{
+	color: #e5117b ;
 	font-weight: bold;
 }
 .admindata{

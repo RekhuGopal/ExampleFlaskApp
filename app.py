@@ -137,6 +137,44 @@ def staffupdatedisplay():
 			return render_template('StaffManagement/staffupdatefail.html', msg=msg)
 	return redirect(url_for('login'))
 
+@app.route("/deletestaffdata")
+def deletestaffdata():
+	if 'loggedin' in session:
+		return render_template("StaffManagement/staffdeletemaster.html")
+	return redirect(url_for('login'))
+
+@app.route("/staffdelete", methods =['GET', 'POST'])
+def staffdelete():
+	if 'loggedin' in session:
+		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+		cursor.execute('DELETE FROM hospitalstaff WHERE email=% s AND hospitalid=% s', (request.form['email'], session['id'] ))
+		
+		try:
+			cursor.commit()
+			msg = 'Staff record for email '+request.form['email']+' is deleted succesfully.!'
+			return render_template("StaffManagement/staffdeletesuccess.html", msg=msg)
+		except:
+			msg = 'No staff record exist for email '+request.form['email']
+			return render_template('StaffManagement/staffdeletefail.html', msg=msg)
+	return redirect(url_for('login'))
+
+@app.route("/viewallstaffdata", methods =['GET', 'POST'])
+def viewallstaffdata():
+	if 'loggedin' in session:
+		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+		cursor.execute('SELECT * FROM hospitalstaff WHERE hospitalid=% s', (session['id'], ))
+		accounts = cursor.fetchall()
+		listofaccounts = []
+		for account in accounts:
+			listofaccounts.append(account)
+		print(listofaccounts)
+		if listofaccounts:
+			return render_template("StaffManagement/viewallstaffdata.html", accounts = listofaccounts)
+		else:
+			msg = 'No staff records exist for email: '+str(session['username'])+' and hosptial ID :'+str(session['id'])
+			return render_template('StaffManagement/viewallstaffdatafail.html', msg=msg)
+	return redirect(url_for('login'))
+
 @app.route("/staffupdatedisplaymaster")
 def staffupdatedisplaymaster():
 	if 'loggedin' in session:

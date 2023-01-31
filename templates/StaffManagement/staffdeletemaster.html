@@ -1,0 +1,38 @@
+<!--Store this code in 'display.html' file inside the 'templates' folder-->
+
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>display</title>
+		<link rel="stylesheet" href="../static/style.css">
+		<style>
+			table,
+			th,
+			td {
+				border: 1px solid black;
+			}
+			 
+			table {
+				border-spacing: 5px;
+			}
+		</style>
+	</head>
+	<body bgcolor="#e6ffee">
+			<div class="staffupdatemaster" align="center">
+				<br>
+				<br>
+				<h1>Hospital Staff Record Delete</h1>	
+				<br>
+				<br>
+				<form action="{{ url_for('staffdelete')}}" method="post" autocomplete="off">
+				<input type="email" name="email" placeholder="Staff Email ID" class="textbox" id="email" required></br></br>
+				<input type="submit" class="btn" value="DeleteNow">
+				</form>
+				<br>
+				<ul>
+					<div class="admintaskdiv" align="center">
+					<li><a href="{{url_for('adminindex')}}">Back</a></li>
+					</div>
+			</div>
+	</body>
+</html>
