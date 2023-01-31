@@ -150,7 +150,7 @@ def staffdelete():
 		cursor.execute('DELETE FROM hospitalstaff WHERE email=% s AND hospitalid=% s', (request.form['email'], session['id'] ))
 		
 		try:
-			cursor.commit()
+			mysql.connection.commit()
 			msg = 'Staff record for email '+request.form['email']+' is deleted succesfully.!'
 			return render_template("StaffManagement/staffdeletesuccess.html", msg=msg)
 		except:
