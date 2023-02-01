@@ -39,6 +39,37 @@ def login():
 			return render_template('masterloginfail.html', msg = msg)
 	return render_template('masterlogin.html')
 
+@app.route('/')
+@app.route('/stafflogin', methods =['GET', 'POST'])
+def stafflogin():
+	msg = ''
+	if request.method == 'POST' and 'email' in request.form and 'hospitalid' in request.form and 'password' in request.form:
+		username = request.form['email']
+		password = request.form['password']
+		hospitalid = request.form['hospitalid']
+		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+		cursor.execute('SELECT * FROM hospitalstaff WHERE email = % s AND password = % s AND hospitalid = % s', (username, password, hospitalid, ))
+		account = cursor.fetchone()
+		if account :
+			session['loggedin'] = True
+			session['id'] = account['hospitalid']
+			session['staffid'] = account['staffid']
+			session['staffname'] = account['staffname']
+			session['role'] = account['role']
+			session['username'] = account['email']
+			if account['role'] == 'receptionist':
+				return render_template('Receptions/receptionindex.html', msg = account)
+			elif account['role'] == 'doctor':
+				return render_template('Doctors/doctorindex.html', msg = account)
+			elif account['role'] == 'pharmacist':
+				return render_template('Pharmacist/pharmacistindex.html', msg = account)
+			else :
+				return render_template('StaffLogin/stafflogin.html')
+		else:
+			msg = 'Incorrect username or password'
+			return render_template('StaffLogin/staffloginfail.html', msg = msg)
+	return render_template('StaffLogin/stafflogin.html')
+
 @app.route('/logout')
 def logout():
     session.pop('loggedin', None)

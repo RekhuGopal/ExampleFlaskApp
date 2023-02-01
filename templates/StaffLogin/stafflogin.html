@@ -13,19 +13,15 @@
 		    </br></br>
 		    <h1>Hospital Management</h1>
 			</br></br>
-			<p1 class="loginsubheading">Management account login</p2>
+			<p1 class="loginsubheading">Hospital Staf Login</p2>
 		    </br></br>
 			<div class="loginbottom">
-			<form action="{{ url_for('login')}}" method="post" autocomplete="off">
+			<form action="{{ url_for('stafflogin')}}" method="post" autocomplete="off">
+			<input type="hospitalid" name="hospitalid" placeholder="Enter Hospital Id" class="textbox" id="hospitalid" required></br></br>
 			<input type="email" name="email" placeholder="Enter Your Email" class="textbox" id="email" required></br></br>
 			<input type="password" name="password" placeholder="Enter Your Password" class="textbox" id="password" required></br></br></br>
 			<input type="submit" class="btn" value="Login">
-			</form></br>
-			<p class="worddark">New to this page? <a class="worddark" href="{{ url_for('register')}}">Register here</a></p>
-		    </br>
-			<ul>
-			<p class="worddark">Hospital Staff? <a class="worddark" href="{{ url_for('stafflogin')}}">Login here</a></p>
-		    </ul>
+			</form></br></br>
 			</div>
 		</div>
 	</body>
