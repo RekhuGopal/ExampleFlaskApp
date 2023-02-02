@@ -249,6 +249,29 @@ def adminindex():
 			return render_template('masterindex.html', msg = account)
 	return redirect(url_for('login'))
 
+@app.route("/staffindex")
+def staffindex():
+	if 'loggedin' in session:
+		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+		cursor.execute('SELECT * FROM hospitalstaff WHERE staffid = % s AND hospitalid = % s', (session['staffid'], session['id'], ))
+		account = cursor.fetchone()
+		if account :
+			session['loggedin'] = True
+			session['id'] = account['hospitalid']
+			session['staffid'] = account['staffid']
+			session['staffname'] = account['staffname']
+			session['role'] = account['role']
+			session['username'] = account['email']
+			if account['role'] == 'receptionist':
+				return render_template('Receptions/receptionindex.html', msg = account)
+			elif account['role'] == 'doctor':
+				return render_template('Doctors/doctorindex.html', msg = account)
+			elif account['role'] == 'pharmacist':
+				return render_template('Pharmacist/pharmacistindex.html', msg = account)
+			else :
+				return render_template('StaffLogin/stafflogin.html')
+	return render_template('StaffLogin/stafflogin.html')
+
 @app.route("/updatemasterdata", methods =['GET', 'POST'])
 def updatemasterdata():
 	msg = ''

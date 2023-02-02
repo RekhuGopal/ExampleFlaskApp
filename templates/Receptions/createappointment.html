@@ -1,0 +1,53 @@
+<!--Store this code in 'register.html' file inside the 'templates' folder-->
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title> register </title>
+		<link rel="stylesheet" href="../static/style.css">	
+	</head>
+	<body bgcolor="#e6ffee">
+		<div class="registerstaff" align="center">
+		    </br>
+			</br>
+				<h1>Create Appointment</h1>
+			</br>
+			</br>
+			<div class="registerbottom">
+			<form action="{{ url_for('createappointment')}}" method="post" autocomplete="off">
+			<input type="text" name="patientname" placeholder="Patient Name" class="textbox" id="patientname" required></br></br>
+			<input type="text" name="careof" placeholder="Care Of Name" class="textbox" id="careof" required></br></br>
+			<input type="text" name="address" placeholder="Address" class="textbox" id="address" required></br></br>
+			<input type="text" name="healthissues" placeholder="Health Issue" class="textbox" id="healthissues" required></br></br>
+			<label for="gender">Gender:</label>
+			<select name="gender" id="gender">
+				<option value="male">Male</option>
+				<option value="female">Female</option>
+				<option value="other">Other</option>
+			</select></br></br>
+			<input type="text" name="age" placeholder="Age" class="textbox" id="age" required></br></br>
+			<input type="text" name="phonenumber" placeholder="Phone Number" class="textbox" id="phonenumber" required></br></br>
+			<label for="role">DOB:</label>
+			<input type="date" name="dateofappointment" placeholder="Date Of Appointment" class="textbox" id="dateofappointment" required></br></br>
+			<input type="text" name="doctor" placeholder="Doctor Name" class="textbox" id="doctor" required></br></br>
+			<label for="specialities">Highest Specialities:</label>
+			<select name="specialities" id="specialities">
+				<option value="mbbs">MBBS</option>
+				<option value="mdmedicine">MD.Medicine</option>
+				<option value="degree">Degree</option>
+				<option value="pharmacist">B.SC Nursing</option>
+				<option value="other">Others</option>
+			</select></br></br>
+			<input type="text" name="fees" placeholder="Fees" class="textbox" id="fees" required></br></br>
+			<input type="submit" class="btn" value="MakeAppointment">
+			</form>
+		    </br>
+		    </br>
+			<ul>
+				<div class="admintaskdiv" align="center">
+				<li><a href="{{url_for('staffindex')}}">Back</a></li>
+				</div>
+			</ul>
+			</div>
+		</div>
+	</body>
+</html>

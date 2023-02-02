@@ -41,3 +41,22 @@ CREATE TABLE IF NOT EXISTS `hospitalstaff`(
     PRIMARY KEY (`staffid`)
     FOREIGN KEY (hospitalid) REFERENCES hospitalaccounts(hospitalid)
 ) ENGINE=InnoDB AUTO_INCREMENT=100000 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE IF NOT EXISTS `hospitalappointments`(
+    `hospitalid` int(11),
+    `appointmentid` int(11) NOT NULL AUTO_INCREMENT,
+    `patientname` varchar(255) NOT NULL,
+    `careof` varchar(100) NOT NULL,
+    `address` varchar(100) NOT NULL,
+    `healthissues` varchar(100) NOT NULL,
+    `gender` varchar(100) NOT NULL,
+    `age` int(11),
+    `phonenumber` varchar(100) NOT NULL,
+    `dateofappointment` DATE,
+    `doctor` varchar(100) NOT NULL,
+    `specialities` varchar(100) NOT NULL,
+    `fees` int(11),
+    PRIMARY KEY (`appointmentid`),
+    FOREIGN KEY (appointmentid) REFERENCES hospitalaccounts(hospitalid)
+) ENGINE=InnoDB AUTO_INCREMENT=77000 DEFAULT CHARSET=utf8;
