@@ -183,7 +183,7 @@ def createappointment():
 @app.route("/backtoappointment")
 def backtoappointment():
 	if 'loggedin' in session:
-		return render_template("StaffManagement/createappointment.html")
+		return render_template("Receptions/createappointment.html")
 	return redirect(url_for('login'))
 
 @app.route("/staffupdatedisplay", methods =['GET', 'POST'])
