@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -154,6 +155,36 @@ def registerstaff():
 	elif request.method == 'POST':
 		msg = 'Please fill out the form !'
 	return render_template('StaffManagement/staffregister.html', msg = msg)
+
+@app.route('/createappointment', methods =['GET', 'POST'])
+def createappointment():
+	msg = ''
+	if request.method == 'POST' and 'patientname' in request.form and 'careof' in request.form and 'address' in request.form and 'healthissues' in request.form and 'gender' in request.form and 'age' in request.form  and 'phonenumber' in request.form and 'dateofappointment' in request.form and 'doctor' in request.form and 'specialities' in request.form and 'fees' in request.form:
+		patientname = request.form['patientname']
+		careof = request.form['careof']
+		address = request.form['address']
+		healthissues = request.form['healthissues']
+		gender = request.form['gender']
+		age = request.form['age']
+		phonenumber = request.form['phonenumber']
+		dateofappointment = request.form['dateofappointment']
+		doctor = request.form['doctor']
+		specialities = request.form['specialities']
+		fees = request.form['fees']
+		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+		cursor.execute('INSERT INTO hospitalappointments VALUES (% s, NULL, % s,  % s,  % s,  % s,  % s,  % s,  % s,  % s,  % s,  % s, % s)',(session['id'], patientname, careof, address, healthissues, gender, age,phonenumber, dateofappointment, doctor, specialities, fees))
+		mysql.connection.commit()
+		msg = 'You have successfully registered an appointment !'
+		return render_template('Receptions/createappointmentsuccess.html', msg = msg)
+	elif request.method == 'POST':
+		msg = 'Please fill out the form !'
+	return render_template('Receptions/createappointment.html')
+
+@app.route("/backtoappointment")
+def backtoappointment():
+	if 'loggedin' in session:
+		return render_template("StaffManagement/createappointment.html")
+	return redirect(url_for('login'))
 
 @app.route("/staffupdatedisplay", methods =['GET', 'POST'])
 def staffupdatedisplay():

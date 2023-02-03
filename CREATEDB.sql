@@ -58,5 +58,5 @@ CREATE TABLE IF NOT EXISTS `hospitalappointments`(
     `specialities` varchar(100) NOT NULL,
     `fees` int(11),
     PRIMARY KEY (`appointmentid`),
-    FOREIGN KEY (appointmentid) REFERENCES hospitalaccounts(hospitalid)
+    FOREIGN KEY (hospitalid) REFERENCES hospitalaccounts(hospitalid)
 ) ENGINE=InnoDB AUTO_INCREMENT=77000 DEFAULT CHARSET=utf8;
